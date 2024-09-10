@@ -1,5 +1,5 @@
 {
-    "name": "com.guraril.fix-linux-world-issues",
+    "name": "io.github.guraril.fix-linux-world-issues",
     "displayName": "Fix VRCWorld issues on Linux",
     "version": "0.1.1",
     "unity": "2022.3",
