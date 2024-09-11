@@ -41,6 +41,26 @@ public class LinuxWorldBugFix
             process_.WaitForExit();
             process_.Close();
         }
+        string flatpakPath =
+            Environment.GetEnvironmentVariable("HOME") + ".var/app/com.unity.UnityHub/cache/tmp/" + Application.companyName + "/" + Application.productName;
+        if (Directory.Exists(flatpakPath))
+        {
+            string vrcwFileName = "/scene-" + EditorUserBuildSettings.activeBuildTarget + "-" + SceneManager.GetActiveScene().name + ".vrcw";
+            System.Diagnostics.ProcessStartInfo process_start_info_ = new()
+            {
+                FileName = "ln",
+                Arguments = "-s \"" + flatpakPath + vrcwFileName.ToLower() + "\" \"" + flatpakPath + vrcwFileName + "\"",
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            };
+
+            System.Diagnostics.Process process_ = System.Diagnostics.Process.Start(process_start_info_);
+
+            process_.WaitForExit();
+            process_.Close();
+        }
+
     }
 }
 #endif
