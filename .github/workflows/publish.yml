@@ -1,0 +1,16 @@
+name: Create Release
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  upload-artifact:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: zip -r io.github.guraril.fix-linux-world-issues-${{ github.ref_name }}.zip ./*
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: io.github.guraril.fix-linux-world-issues-${{ github.ref_name }}.zip
