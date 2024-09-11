@@ -22,8 +22,12 @@ public class LinuxWorldBugFix
     }
     static void Run(object sender, object target)
     {
-        // Flatpak version is not supported. But I will support it soon!
-        string path = "/tmp/" + Application.companyName + "/" + Application.productName;
+        FixVrcwFileName("/tmp/" + Application.companyName + "/" + Application.productName);
+        FixVrcwFileName(
+            Environment.GetEnvironmentVariable("HOME") + ".var/app/com.unity.UnityHub/cache/tmp/" + Application.companyName + "/" + Application.productName);
+    }
+    static void FixVrcwFileName(string path)
+    {
         if (Directory.Exists(path))
         {
             string vrcwFileName = "/scene-" + EditorUserBuildSettings.activeBuildTarget + "-" + SceneManager.GetActiveScene().name + ".vrcw";
