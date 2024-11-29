@@ -20,7 +20,7 @@ class BuildAndTest : EditorWindow
             Debug.LogError("Please open Builder tab in VRChat SDK Control Panel");
             return;
         }
-        RunVRChat(await builder.Build(), 0, true, true);
+        RunVRChat(await builder.Build(), 1, true, true);
     }
 
     // 以下をVRChat SDKの非公開APIを使用しないように改変
