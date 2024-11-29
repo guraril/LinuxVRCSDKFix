@@ -1,7 +1,7 @@
+# Fix VRCWorld issues on Linux
+
 > [!NOTE]
 > SDKを改変しているわけではないので、現時点ではVRChatの利用規約に違反していないはずです(問題があると思われた方は、規約の「ここ引っかかりそうじゃない？」な部分を引用したIssueを立ててください)
-
-# Fix VRCWorld issues on Linux
 
 ## 機能
 
