@@ -12,7 +12,8 @@
 
 ### Build & Test
 
-1. Unity上部のメニューからTool/Fix World Issue on Linux/Build & Testをクリック
+1. Unity上部のメニューからTools/Fix VRCWorld Issues/Open Control Panelをクリック
+2. 出現したウィンドウの下部にあるBuild & Testボタンをクリック
 
 これだけで簡単にVRChatのローカルテストができます！
 
