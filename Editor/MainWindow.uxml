@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Label tabindex="-1" text="Path Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+    <ui:TextField picking-mode="Ignore" label="VRChat Path (option)&#x9;&#x9;" name="VRChatPath" />
+    <ui:TextField picking-mode="Ignore" label="Proton Path (option)&#x9;&#x9;" name="ProtonPath" />
+    <ui:TextField picking-mode="Ignore" label="compatdata Path (option)&#x9;" name="compatdataPath" />
+    <ui:Button text="Configure Path" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ConfigurePath" />
+    <ui:Label tabindex="-1" text="Launch Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+    <ui:IntegerField label="Number of Client&#x9;&#x9;&#x9;" value="1" name="NumberOfClient" />
+    <ui:Toggle label="Force Non-VR&#x9;&#x9;&#x9;" value="true" name="ForceNonVR" />
+    <ui:Toggle label="Enable World Reload&#x9;&#x9;" value="false" name="EnableWorldReload" />
+    <ui:Toggle label="Enable Debug GUI&#x9;&#x9;" value="true" name="EnableDebugGUI" />
+    <ui:Toggle label="Enable SDK log levels&#x9;&#x9;" value="true" name="EnableSDKLogLevels" />
+    <ui:Toggle label="Enable Udon debug logging&#x9;" name="UdonDebugLogging" value="true" />
+    <ui:Button text="\nBuild &amp; Test\n" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BuildAndTest" />
+</ui:UXML>
