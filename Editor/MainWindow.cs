@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -62,5 +61,3 @@ public class MainWindow : EditorWindow
         if (Directory.Exists(compatdataPath)) { EditorPrefs.SetString("FixLinuxVRCWorldIssue:compatdataPath", compatdataPath); }
     }
 }
-
-#endif
