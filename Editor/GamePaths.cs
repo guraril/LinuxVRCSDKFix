@@ -7,7 +7,14 @@ namespace com.guraril.linux_world_fix
     public static class GamePaths
     {
         static readonly string defaultVRChatPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/VRChat/VRChat.exe";
-        static readonly string defaultProtonPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton - Experimental/proton";
+        static readonly string[] defaultProtonPaths =
+        new string[] {
+            "/usr/bin/proton",
+            Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton - Experimental/proton",
+            Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton 9.0 (Beta)",
+            Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton 8.0",
+            Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton 7.0"
+        };
         static readonly string defaultCompatdataPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/compatdata/";
 
         public static string GetVRChatPath()
@@ -33,13 +40,16 @@ namespace com.guraril.linux_world_fix
             {
                 return EditorPrefs.GetString("FixLinuxVRCWorldIssue:ProtonPath");
             }
-            else if (File.Exists(defaultProtonPath))
-            {
-                EditorPrefs.SetString("FixLinuxVRCWorldIssue:ProtonPath", defaultProtonPath);
-                return defaultProtonPath;
-            }
             else
             {
+                foreach (var i in defaultProtonPaths)
+                {
+                    if (File.Exists(i))
+                    {
+                        EditorPrefs.SetString("FixLinuxVRCWorldIssue:ProtonPath", i);
+                        return i;
+                    }
+                }
                 return "";
             }
         }
