@@ -39,9 +39,9 @@ public class MainWindow : EditorWindow
         var buildAndTest = root.Q<Button>("BuildAndTest");
         var configurePath = root.Q<Button>("ConfigurePath");
 
-        vrchatPath.value = EditorPrefs.HasKey("FixLinuxVRCWorldIssue:VRChatPath") ? EditorPrefs.GetString("FixLinuxVRCWorldIssue:VRChatPath") : "";
-        protonPath.value = EditorPrefs.HasKey("FixLinuxVRCWorldIssue:ProtonPath") ? EditorPrefs.GetString("FixLinuxVRCWorldIssue:ProtonPath") : "";
-        compatdataPath.value = EditorPrefs.HasKey("FixLinuxVRCWorldIssue:compatdataPath") ? EditorPrefs.GetString("FixLinuxVRCWorldIssue:compatdataPath") : "";
+        vrchatPath.value = GamePaths.GetVRChatPath();
+        protonPath.value = GamePaths.GetProtonPath();
+        compatdataPath.value = GamePaths.GetCompatdataPath();
 
         buildAndTest.RegisterCallback<ClickEvent>((_) =>
         {
@@ -51,13 +51,9 @@ public class MainWindow : EditorWindow
         });
         configurePath.RegisterCallback<ClickEvent>((_) =>
         {
-            ConfigurePath(vrchatPath.value, protonPath.value, compatdataPath.value);
+            GamePaths.SetVRChatPath(vrchatPath.value);
+            GamePaths.SetProtonPath(protonPath.value);
+            GamePaths.SetCompatdataPath(compatdataPath.value);
         });
-    }
-    public void ConfigurePath(string vrchatPath, string protonPath, string compatdataPath)
-    {
-        if (File.Exists(vrchatPath)) { EditorPrefs.SetString("FixLinuxVRCWorldIssue:VRChatPath", vrchatPath); }
-        if (File.Exists(protonPath)) { EditorPrefs.SetString("FixLinuxVRCWorldIssue:ProtonPath", protonPath); }
-        if (Directory.Exists(compatdataPath)) { EditorPrefs.SetString("FixLinuxVRCWorldIssue:compatdataPath", compatdataPath); }
     }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using VRC.SDK3.Editor;
-using UnityEditor;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
 
@@ -29,57 +28,9 @@ class BuildAndTest
         string vrcwFilePath, int clientNumber, bool isNoVR, bool isAutoReload, bool enableDebugGUI, bool enableSDKLogLevel, bool enableUdonDebugLogging
     )
     {
-        var defaultVRChatPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/VRChat/VRChat.exe";
-        var defaultProtonPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/common/Proton - Experimental/proton";
-        var defaultCompatdataPath = Environment.GetEnvironmentVariable("HOME") + "/.local/share/Steam/steamapps/compatdata/";
-
-        string vrcInstallPath;
-        if (EditorPrefs.HasKey("FixLinuxVRCWorldIssue:VRChatPath"))
-        {
-            vrcInstallPath = EditorPrefs.GetString("FixLinuxVRCWorldIssue:VRChatPath");
-        }
-        else if (File.Exists(defaultVRChatPath))
-        {
-            EditorPrefs.SetString("FixLinuxVRCWorldIssue:VRChatPath", defaultVRChatPath);
-            vrcInstallPath = defaultVRChatPath;
-        }
-        else
-        {
-            Debug.LogError("incorrect VRChat path");
-            return;
-        }
-
-        string protonPath;
-        if (EditorPrefs.HasKey("FixLinuxVRCWorldIssue:ProtonPath"))
-        {
-            protonPath = EditorPrefs.GetString("FixLinuxVRCWorldIssue:ProtonPath");
-        }
-        else if (File.Exists(defaultProtonPath))
-        {
-            EditorPrefs.SetString("FixLinuxVRCWorldIssue:ProtonPath", defaultProtonPath);
-            protonPath = defaultProtonPath;
-        }
-        else
-        {
-            Debug.LogError("incorrect Proton path");
-            return;
-        }
-
-        string compatdataPath;
-        if (EditorPrefs.HasKey("FixLinuxVRCWorldIssue:compatdataPath"))
-        {
-            compatdataPath = EditorPrefs.GetString("FixLinuxVRCWorldIssue:compatdataPath");
-        }
-        else if (Directory.Exists(defaultCompatdataPath))
-        {
-            EditorPrefs.SetString("FixLinuxVRCWorldIssue:compatdataPath", defaultCompatdataPath);
-            compatdataPath = defaultCompatdataPath;
-        }
-        else
-        {
-            Debug.LogError("incorrect compatdata path");
-            return;
-        }
+        string vrcInstallPath = GamePaths.GetVRChatPath();
+        string protonPath = GamePaths.GetProtonPath();
+        string compatdataPath = GamePaths.GetCompatdataPath();
 
         // TODO: Make this configurable
         var compatClientInstallPath = Environment.GetEnvironmentVariable("HOME") + "/.steam/";
