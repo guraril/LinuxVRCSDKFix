@@ -1,7 +1,7 @@
 {
     "name": "com.guraril.linux-vrcsdk-fix",
     "displayName": "Linux VRCSDK Fix",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "unity": "2022.3",
     "description": "Fix VRCSDK issue on Linux.",
     "dependencies": {},
