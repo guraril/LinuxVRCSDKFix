@@ -2,10 +2,6 @@
 
 ## 機能
 
-### VRChat Avatar
-
-- Build & Testを実行できるように
-
 ### VRChat World
 
 - ワールドをアップロードできない問題の修正
@@ -15,10 +11,10 @@
 
 ### Build & Test
 
-1. Unity上部のメニューからTools/Fix VRCWorld Issues/Open Control Panelをクリック
+1. Unity上部のメニューからTools/Linux VRCSDK Fixをクリック
 2. 出現したウィンドウの下部にあるBuild & Testボタンをクリック
 
-これだけで簡単にVRChatのローカルテストができます！
+これだけで簡単にVRChatワールドのローカルテストができます！
 
 ## 補足
 
