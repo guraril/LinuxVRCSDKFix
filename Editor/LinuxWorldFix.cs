@@ -1,3 +1,4 @@
+#if ON_VRCWORLD
 using System;
 using System.IO;
 using UnityEditor;
@@ -5,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using VRC.SDK3.Editor;
 
-namespace com.guraril.linux_world_fix
+namespace GuraRil.LinuxVrcSdkFix
 {
 
     public class LinuxWorldBugFix
@@ -13,20 +14,22 @@ namespace com.guraril.linux_world_fix
         [InitializeOnLoadMethod]
         public static void RegisterSDKCallback()
         {
-            VRCSdkControlPanel.OnSdkPanelEnable += AddBuildHook;
-        }
-        private static void AddBuildHook(object sender, EventArgs e)
-        {
-            if (VRCSdkControlPanel.TryGetBuilder<IVRCSdkWorldBuilderApi>(out var builder))
+            VRCSdkControlPanel.OnSdkPanelEnable += (sender, e) =>
             {
-                builder.OnSdkBuildStart += Run;
-            }
+                if (VRCSdkControlPanel.TryGetBuilder<IVRCSdkWorldBuilderApi>(out var builder))
+                {
+                    builder.OnSdkBuildProgress += Run;
+                }
+            };
         }
+
         static void Run(object sender, object target)
         {
+            string flatpakDir =
+                Environment.GetEnvironmentVariable("HOME") + "/.var/app/com.unity.UnityHub/cache/tmp/" + Application.companyName + "/" + Application.productName;
+
             FixVrcwFileName("/tmp/" + Application.companyName + "/" + Application.productName);
-            FixVrcwFileName(
-                Environment.GetEnvironmentVariable("HOME") + ".var/app/com.unity.UnityHub/cache/tmp/" + Application.companyName + "/" + Application.productName);
+            FixVrcwFileName(flatpakDir);
         }
         static void FixVrcwFileName(string path)
         {
@@ -51,3 +54,4 @@ namespace com.guraril.linux_world_fix
     }
 
 }
+#endif

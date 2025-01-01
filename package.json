@@ -1,13 +1,12 @@
 {
-    "name": "io.github.guraril.fix-linux-world-issues",
-    "displayName": "Fix VRCWorld issues on Linux",
-    "version": "0.4.1",
+    "name": "com.guraril.linux-vrcsdk-fix",
+    "displayName": "Linux VRCSDK Fix",
+    "version": "0.5.0",
     "unity": "2022.3",
-    "description": "Fix world uploading issues on Linux",
+    "description": "Fix VRCSDK issue on Linux.",
     "dependencies": {},
     "vpmDependencies": {
-        "com.vrchat.base": ">3.5.0",
-        "com.vrchat.worlds": ">3.5.0"
+        "com.vrchat.base": ">3.5.0"
     },
     "author": {
         "name": "ぐらりぃる",
