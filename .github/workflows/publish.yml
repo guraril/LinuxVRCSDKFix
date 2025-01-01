@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: zip -r io.github.guraril.fix-linux-world-issues-${{ github.ref_name }}.zip ./*
+      - run: zip -r com.guraril.linux-sdk-fix-${{ github.ref_name }}.zip ./*
       - uses: softprops/action-gh-release@v2
         with:
-          files: io.github.guraril.fix-linux-world-issues-${{ github.ref_name }}.zip
+          files: com.guraril.linux-sdk-fix-${{ github.ref_name }}.zip
